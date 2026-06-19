@@ -1,0 +1,90 @@
+#!/usr/bin/perl -w
+use strict;
+
+# Copyright (c) 2026 Charles E. Suresh
+# SPDX-License-Identifier: AGPL-3.0-only
+# Please see the LICENSE file for the Affero GPL 3.0 license details
+
+my $glob=0;
+my $manifest=0;
+
+while (<>) {
+	s/\'\\\'/\'\\\\'/g;
+	s/([a-z]+)?\!(\d+)/base\[$1+$2\]/g;
+	s/SECTION\s+\"(\S+)\"/package $1/ && print && next;
+	if (/GET/) {
+		print "// $_";
+		next;
+	}
+	if (/GLOBAL\s+\{/) {
+		$glob=1;
+		print "// $_";
+		next;
+	}
+	if ($glob) {
+		if (/^\}/) {
+			$glob=0;
+			print "// $_";
+			next;
+		} else {
+			s/;/,/g;
+			s/$/: int/;
+		}
+		print;
+		next;
+	}
+	if (/MANIFEST\s+\{/) {
+		$manifest=1;
+		print "// $_";
+		next;
+	}
+	if ($manifest) {
+		if (/^\}/) {
+			$manifest=0;
+			print "// $_";
+			next;
+		} else {
+			s/=\s+(\-?\d+);/ :: $1\n/g;
+			s/=\s+(\-?\d+)$/ :: $1\n/g;
+			s/=\s+(\'([^\']+)\');/ :: int($1)\n/g;
+			s/=\s+(\'([^\']+)\')\s*$/ :: int($1)\n/g;
+		}
+		print;
+		next;
+	}
+	s/\'\*n\'/\'\\n\'/g;
+	s/\'\*p\'/\'\\r\'/g;
+	s/\'\*t\'/\'\\t\'/g;
+	s/\'\*s\'/\'\ \'/g;
+	s/\'\*\*\'/\'\*\'/g;
+	s/\|/\|\|/g;
+	s/\&/\&\&/g;
+	s/\bAND\s+([a-z]+)\(/$1 :: proc(/g;
+	s/\bLET\s+([a-z]+)\(/$1 :: proc(/g;
+	s/\bBE\s/ {\n/g;
+	s/\bINTO\s/ {\n/g;
+	s/\bRESULTIS\b/return/g;
+	s/\bRETURN\b/return/g;
+	s/\bBREAK\b/break/g;
+	s/\bDO\b/{/g;
+	s/\bTEST(\s+.*[^:]=)?/if$1=/g;
+	s/\bIF(\s+.*[^:]=)/if$1=/g;
+	s/\bIF\b/if/g;
+	s/\bUNLESS(\s+.*=)/if$1!=/g;
+	s/THEN/ {/g;
+	s/CASE/case/g;
+	s/\bFOR\b/for/g;
+	s/LOOP/continue/g;
+	s/SWITCHON/switch/g;
+	s/=\s+VALOF/-> int/g;
+	s/ELSE/ } else {/g;
+	s/(,\s+\w+)\s+\:\=/$1 =/g;
+	s/({\s+\w+)\s+\:\=/$1 =/g;
+	s/(\;\s+\w+)\s+\:\=/$1 =/g;
+	s/(^\s+\w+)\s+\:\=/$1 =/g;
+	s/(\s+\!)(\w+)\s+\:\=/base[$2] =/g;
+	s/LET\s+([a-z0-9]+)\s+\=/$1 :=/g;
+	s/LET\s+([^,]+)(,.*)/$1$2 :=/g;
+	s/proc(\([^\)]+)\)/proc$1 :int)/g;
+	print;
+}
