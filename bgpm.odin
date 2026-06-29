@@ -151,6 +151,7 @@ bgpm :: proc() {
 			d := 1
 			for {
 				ch = getch()
+				if ch == s_eof { skip = true; break }
 				if ch < 0 { error("Non character in quoted string") }
 				if ch == c_lquote { d += 1 }
 				if ch == c_rquote { d -= 1; if d == 0 { break } }
