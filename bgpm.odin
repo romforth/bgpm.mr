@@ -199,7 +199,7 @@ bgpm :: proc() {
 				writef("\nCalling macro\n")
 				for (base[a]>=0) {
 					writef("arg %i2: ", i)
-					wrarg(a)
+					//wrarg(a)
 					newline()
 					a := a + base[a] +1
 					i := i+1
@@ -393,18 +393,18 @@ btrace :: proc(pi, ni: int) { p, n := pi, ni	// since pi and ni are not writable
 wrcall :: proc(ai: int, b: int) { a := ai	// since ai is not writable
 	sep := c_call
 	for a < b {
-		wrc(sep); wrarg(a)
+		wrc(sep); //wrarg(a)
 		a = a + base[a] + 1
 		sep = c_sep
 	}
 }
 
-wrarg :: proc(a: int) { for ptr := a+1; ptr <= a+base[a]; ptr += 1 { wrc(base[ptr]) } }
+wrarg :: proc(a: string) { fmt.print(a) }
 
 wrenv :: proc(e, n: int) {
 	if n == 0 || e == 0 { return }
-	wrs("Name: ");    wrarg(arg(e+2, 0))
-	wrs("  Value: "); wrarg(arg(e+2, 1))
+	wrs("Name: ");    //wrarg(arg(e+2, 0))
+	wrs("  Value: "); //wrarg(arg(e+2, 1))
 	wrc('\n')
 	wrenv(base[e], n-1)
 }
