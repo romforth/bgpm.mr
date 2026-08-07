@@ -5,8 +5,10 @@ all : bgpm
 	cmp collatz.out collatz.exp
 	./bgpm < defs.inp > defs.out
 	cmp defs.out defs.exp
+	./bgpm < hanoi.inp > hanoi.out
+	cmp hanoi.out hanoi.exp
 bgpm : bgpm.odin
 	odin build .
 
 clean :
-	rm bgpm out collatz.out defs.out
+	rm bgpm out collatz.out defs.out hanoi.out

@@ -1,0 +1,39 @@
+{H 1 A B C} =>
+Move disc 1 from tower A to tower B
+
+
+{H 2 A B C} =>
+Move disc 1 from tower A to tower C
+Move disc 2 from tower A to tower B
+Move disc 1 from tower C to tower B
+
+
+{H 3 A B C} =>
+Move disc 1 from tower A to tower B
+Move disc 2 from tower A to tower C
+Move disc 1 from tower B to tower C
+Move disc 3 from tower A to tower B
+Move disc 1 from tower C to tower A
+Move disc 2 from tower C to tower B
+Move disc 1 from tower A to tower B
+
+
+{H 4 A B C} =>
+Move disc 1 from tower A to tower C
+Move disc 2 from tower A to tower B
+Move disc 1 from tower C to tower B
+Move disc 3 from tower A to tower C
+Move disc 1 from tower B to tower A
+Move disc 2 from tower B to tower C
+Move disc 1 from tower A to tower C
+Move disc 4 from tower A to tower B
+Move disc 1 from tower C to tower B
+Move disc 2 from tower C to tower A
+Move disc 1 from tower B to tower A
+Move disc 3 from tower C to tower B
+Move disc 1 from tower A to tower C
+Move disc 2 from tower A to tower B
+Move disc 1 from tower C to tower B
+
+
+End of output
