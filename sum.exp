@@ -1,0 +1,19 @@
+Testing the definition of Sum given in 
+
+General Purpose Macrogenerator
+by C. Strachey
+CJ Vol.8 No.3, Oct 1965
+
+Modified to run under bgpm by Martin Richards 2013
+
+This version corrects the bug in Successor as defined
+in Strachey's paper.
+
+{Successor 3 4} => 3 5
+{Successor 3 9} => 4 0
+
+{Sum 3 4 2} => 3 6
+{Sum 3 8 3} => 4 1
+
+
+

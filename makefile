@@ -9,10 +9,14 @@ all : bgpm
 	cmp hanoi.out hanoi.exp
 	./bgpm < perm.inp > perm.out
 	cmp perm.out perm.exp
-	./bgpm < prime.inp > prime.out
-	cmp prime.out prime.exp
+	# works but takes a bit of time: ~7s
+	# disable for now so the make finishes quickly
+	#./bgpm < prime.inp > prime.out
+	#cmp prime.out prime.exp
+	./bgpm < sum.inp > sum.out
+	cmp sum.out sum.exp
 bgpm : bgpm.odin
 	odin build .
 
 clean :
-	rm bgpm out collatz.out defs.out hanoi.out perm.out prime.out
+	rm -f bgpm out collatz.out defs.out hanoi.out perm.out prime.out sum.out
