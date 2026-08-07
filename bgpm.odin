@@ -45,13 +45,13 @@ s_eval		:: -5
 s_lquote	:: -6
 s_rquote	:: -7
 
-c_call		:: int('[')
-c_apply		:: int(']')
-c_sep		:: int('\\')
+c_call		:: int('{')
+c_apply		:: int('}')
+c_sep		:: int(' ')
 c_skip		:: int('~')
-c_lquote	:: int('{')
-c_rquote	:: int('}')
-c_arg		:: int('^')
+c_lquote	:: int('[')
+c_rquote	:: int(']')
+c_arg		:: int('$')
 
 // MANIFEST }
 

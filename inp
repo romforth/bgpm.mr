@@ -1,9 +1,67 @@
 This is a test
-{
-Another test within literal quotes
-}
-~ This should be ignored
-This part is printed ~ but this part should be ignored to the end of this line
-and this part is printed too
+{def A [A$1A]}
+{def B [B{A X$1X}B]}
+{def APA [P$1$1P]}
 
-[def\foo\bar]
+Tests:
+{A C}
+ACA
+
+{A ACA}
+{A {A C}}
+AACAA
+
+{A XDX}
+AXDXA
+
+{B D}
+BAXDXAB
+
+{A P}
+APA
+
+{APA Y}
+{{A P} Y}
+PYYP
+
+Q[{A C}]R
+[Q{A C}R]
+
+{A [{A X}]}
+[A{A X}A]
+
+{B [{A X}]}
+[BAX{A X}XAB]
+
+Q[{]R[}]
+[Q{R}]
+
+Q[[{A C}]]R
+[Q[{A C}]R]
+
+{A X U {def A [$1$2$1]}}
+XUX
+
+{def Suc [{1 2 3 4 5 6 7 8 9 10 {def 1 [$]$1}}]}
+{def IF [{$1 {def $1 $4}{def $2 $3}}]}
+{def Successor [{$2 {def $2 $1[[ ]{Suc ]$2[}]}
+                    {def 9 [{Suc ]$1[} 0]}}]}
+{def Sum [{S $1 $2 0 {def S [{$3 {def $3 [{S ]{Successor $1 $2}[ ]{Suc $3}[}]}{def ]$3[ $1[ ]$2}}]}}]}
+
+{a {def a [c]}{def b [d]}}
+c
+
+{IF ab ab same different}
+same
+
+{IF b c same different}
+different
+
+{Suc 3}
+4
+
+{Successor 2 9}
+3 0
+
+{Sum 3 4 2}
+3 6

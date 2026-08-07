@@ -1,7 +1,66 @@
 This is a test
 
-Another test within literal quotes
-
-This part is printed and this part is printed too
 
 
+
+Tests:
+ACA
+ACA
+
+AACAA
+AACAA
+AACAA
+
+AXDXA
+AXDXA
+
+BAXDXAB
+BAXDXAB
+
+APA
+APA
+
+PYYP
+PYYP
+PYYP
+
+Q{A C}R
+Q{A C}R
+
+A{A X}A
+A{A X}A
+
+BAX{A X}XAB
+BAX{A X}XAB
+
+Q{R}
+Q{R}
+
+Q[{A C}]R
+Q[{A C}]R
+
+XUX
+XUX
+
+
+
+
+
+
+c
+c
+
+same
+same
+
+different
+different
+
+4
+4
+
+3 0
+3 0
+
+3 6
+3 6
