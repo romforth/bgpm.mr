@@ -1,0 +1,35 @@
+This is to demonstrate that GPM and BGPM macros can leave definitions
+behind.
+
+
+
+{defs A} => 
+Defining Aa
+
+Defining Ab
+
+Defining Ac
+
+
+{defs B} => 
+Defining Ba
+
+Defining Bb
+
+Defining Bc
+
+
+{defs C} => 
+Defining Ca
+
+Defining Cb
+
+Defining Cc
+
+
+
+{Aa xxx} => Macro Aa called with argument xxx
+{Bb yyy} => Macro Bb called with argument yyy
+{Cc zzz} => Macro Cc called with argument zzz
+
+End of test
