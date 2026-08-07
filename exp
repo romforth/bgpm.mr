@@ -64,3 +64,11 @@ different
 
 3 6
 3 6
+
+This demonstrates a subtle bug in Strachey's GPM which is
+not present in Martin Richards' bgpm. Try
+
+
+arg0=args arg1=aaaxxx arg2=bbbyyy arg3=ccczzz
+arg0=args arg1=aaaxxx arg2=bbbyyy arg3=ccczzz
+arg0=args arg1=aaaxxx arg2=bbbyyy arg3=ccczzz
