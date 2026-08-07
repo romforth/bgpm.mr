@@ -1,0 +1,11 @@
+Permuting A B C
+
+{perm 3 [ A B C]} =>
+ABC
+ACB
+BAC
+BCA
+CAB
+CBA
+
+

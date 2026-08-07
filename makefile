@@ -7,8 +7,10 @@ all : bgpm
 	cmp defs.out defs.exp
 	./bgpm < hanoi.inp > hanoi.out
 	cmp hanoi.out hanoi.exp
+	./bgpm < perm.inp > perm.out
+	cmp perm.out perm.exp
 bgpm : bgpm.odin
 	odin build .
 
 clean :
-	rm bgpm out collatz.out defs.out hanoi.out
+	rm bgpm out collatz.out defs.out hanoi.out perm.out
