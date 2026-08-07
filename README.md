@@ -7,6 +7,12 @@ The original code is in this file: bcplprogs/bgpm/bgpm.b of that repo
 This is a followup to my previous GPM conversion (from Rust to C) which
 is available at: https://github.com/romforth/gpm.psl
 
+After wrapping that up, I then decided to use Martin Richards version when I
+noticed that he had found and fixed a subtle bug in Strachey's version
+(see the file bcplprogs/bgpm/bug.bgpm) which turned out to be hard to fix with
+the single stack implementation. I also liked the symmetry between Richards'
+two stack implementation and the data+return stacks of Forth.
+
 I chose Odin since my idle browsing on Ginger Bill's blog at:
 https://gingerbill.org/article/2021/12/15/multiple-return-values-research
 mentioned that it supported multiple assignment which is used extensively in
@@ -35,8 +41,8 @@ out Odin code but I didn't want to bother with the grunt work involved.
 I tried to match the original BCPL code as exactly as possible - even trying
 to keep the number of lines identical wherever I could.
 
-As with the earlier GPM implementation, I'd like to change the syntax to match
-the one that I had used earlier in: https://github.com/romforth/gpm but I can't
-do it yet since it causes a segv, so I'm holding off on that change for now.
-I'd like to do this primarily for the sake of consistency - so that I can use
-the tests from the GPM implementation as is.
+As with the earlier GPM implementations, I've taken the liberty of changing
+the syntax of the GPM language to match the one that I had used earlier in:
+https://github.com/romforth/gpm (and in https://github.com/romforth/gpm.psl).
+I did this primarily for the sake of consistency - so that I can use the tests
+from the older GPM ports as is.
