@@ -6,4 +6,4 @@ Another test within literal quotes
 This part is printed ~ but this part should be ignored to the end of this line
 and this part is printed too
 
-~[def\foo\bar]
+[def\foo\bar]

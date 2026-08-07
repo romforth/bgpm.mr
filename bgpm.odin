@@ -85,6 +85,7 @@ push :: proc(ch: int) -> int {
 	if t == s { error("Insufficient work space") }
 	s += 1
 	base[s] = ch
+//fmt.println("set base[", s, "] to ", ch, "in push")
 	return s
 }
 
@@ -105,16 +106,19 @@ getch :: proc() -> int {
 }
 
 arg :: proc(ai: int, ni: int) -> int { a, n := ai, ni	// since ai and ni are not writable
+//fmt.println("a: ", a, "n: ", n)
 	for {
 		if base[a] < 0 { error("Too few arguments") }
 		if n == 0 { return a }
 		a, n = a+base[a]+1, n-1
+//fmt.println("new a: ", a, "n: ", n)
 	}
 }
 
 lookup :: proc(a: int) -> int {
 	q, i, len := e, 0, base[a]
 	for q != 0 && i <= len {
+//fmt.println("comparing base[",q+i+2,"] (=",base[q+i+2],") with base[",a+1,"] (=",base[a+i], ")")
 		if base[q+i+2] == base[a+i] { i += 1 } else { q, i = base[q], 0 }
 	}
 	if q == 0 { error("Macro not defined") }
@@ -171,6 +175,7 @@ bgpm :: proc() {
 //writef("Sep\n")
 			if h == 0 { putch(ch); continue }
 			base[h] = s-h
+//fmt.println("set base[", h, "] to ", s-h, "in c_sep")
 			h = push(0)
 
 		case c_arg:		// ^
@@ -185,6 +190,7 @@ bgpm :: proc() {
 //writef("Apply\n")
 			a := f
 			if h == 0 { putch(ch); continue }
+//fmt.println("set base[", h, "] to ", s-h, " in apply")
 			base[h] = s-h
 			push(s_eom)
 			f, h = base[a], base[a+1]	// Restore the previous f and h
@@ -283,7 +289,7 @@ bgpm :: proc() {
 			for base[q] >= 0 { q = q+base[q]+1 }
 			// q points to the eom at the end of the call.
 			// Put eom at end of second argument.
-			base[a2+base[a2+1]] = s_eom
+			base[a2+base[a2]+1] = s_eom
 			base[ne], base[ne+1] = e, q
 			e = ne
 			c, t = base[p+1], e-1
