@@ -15,8 +15,10 @@ all : bgpm
 	#cmp prime.out prime.exp
 	./bgpm < sum.inp > sum.out
 	cmp sum.out sum.exp
+	./bgpm < t1.inp > t1.out
+	cmp t1.out t1.exp
 bgpm : bgpm.odin
 	odin build .
 
 clean :
-	rm -f bgpm out collatz.out defs.out hanoi.out perm.out prime.out sum.out
+	rm -f bgpm out collatz.out defs.out hanoi.out perm.out prime.out sum.out t1.out
