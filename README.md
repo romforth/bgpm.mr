@@ -1,4 +1,4 @@
-# A reimplementation of Martin Richards' BGPM converted from BCPL to Odin
+# A reimplementation of Martin Richards' BGPM converted from BCPL to Odin (and C)
 
 This is a "bug compatible" conversion into Odin of Martin Richards' BGPM
 implementation in BCPL which is available at: https://github.com/8l/bgpm
@@ -46,3 +46,8 @@ the syntax of the GPM language to match the one that I had used earlier in:
 https://github.com/romforth/gpm (and in https://github.com/romforth/gpm.psl).
 I did this primarily for the sake of consistency - so that I can use the tests
 from the older GPM ports as is.
+
+Once the Odin port was completed and seen to be working well, I decided to port
+_that_ to C since it seemed to be a fairly trivial/easy exercise. The one change
+between the two implementations is in the handling of EOF since I was on terra
+firma with C whereas I was using Odin for the very first time in this project.
