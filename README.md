@@ -1,7 +1,7 @@
 # A reimplementation of Martin Richards' BGPM converted from BCPL to Odin (and C)
 
 This is a "bug compatible" conversion into Odin of Martin Richards' BGPM
-implementation in BCPL which is available at: https://github.com/8l/bgpm
+implementation in BCPL which is available at: https://github.com/8l/bcpl
 The original code is in this file: bcplprogs/bgpm/bgpm.b of that repo
 
 This is a followup to my previous GPM conversion (from Rust to C) which

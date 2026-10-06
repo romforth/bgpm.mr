@@ -1,4 +1,4 @@
-all : bgpm C/bgpm
+all : bgpm.mr C/bgpm
 	./bgpm < inp > out
 	cmp out exp
 	./bgpm < collatz.inp > collatz.out
@@ -17,11 +17,11 @@ all : bgpm C/bgpm
 	cmp sum.out sum.exp
 	./bgpm < t1.inp > t1.out
 	cmp t1.out t1.exp
-bgpm : bgpm.odin
+bgpm.mr : bgpm.odin
 	odin build .
 
 C/bgpm : C/bgpm.c
 	$(MAKE) -C C
 clean :
-	rm -f bgpm out collatz.out defs.out hanoi.out perm.out prime.out sum.out t1.out
+	rm -f bgpm.mr out collatz.out defs.out hanoi.out perm.out prime.out sum.out t1.out
 	$(MAKE) -C C clean
